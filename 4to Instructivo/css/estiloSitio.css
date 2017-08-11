@@ -1,0 +1,70 @@
+	 #header {
+	  background-color:#004d99;
+	  color:white; 
+	  text-align:center; 
+	  padding:5px; 
+	}
+	 #nav { 
+	 	line-height:30px; 
+	 	background-color:#eeeeee; 
+	 	height:300px; 
+	 	width:100px; 
+	 	float:left; 
+	 	padding:5px; 
+	 } 
+	 #section { 
+	 	background-color:white;
+	 	height:290px;
+	 	float:center;
+	 	padding:10px; 
+
+
+	 } 
+	 #footer { 
+	 	background-color:gray; 
+	 	color:white; 
+	 	clear:both; 
+	 	text-align:center; 
+	 	padding:5px; 
+	 } 
+
+
+	.button {
+		height: 15px;
+		width: 90px;
+	    background-color: #80bfff;
+	    border: none;
+	    color: white;
+	    padding: 15px 2px;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 14px;
+	    margin: 4px 2px;
+	    cursor: pointer;
+	    
+	}
+
+	.button:hover {
+		background-color: #1a8cff;
+	}
+
+	.button:active {
+  		background-color: #0073e6;
+  	
+	}
+
+	.imagen-logo{
+		height:80px; 
+		width:100px;
+		float:left;
+	}
+
+	#section p{
+		color: #004080;
+	}
+
+	#section h1{
+		color: #004080;
+		text-decoration: underline;
+	}
