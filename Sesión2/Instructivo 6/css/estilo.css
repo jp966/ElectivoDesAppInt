@@ -1,0 +1,43 @@
+ h1 {
+	font-family: sans-serif;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+}
+
+table {
+    width: 100%;
+}
+
+td{
+	background-color: white;
+	height: 10px;
+	width: 100px;
+
+}
+
+td.black{
+	background-color: black;
+	height: 10px;
+	width: 100px;
+}
+
+.fondo {
+	background-image: url("https://storage.googleapis.com/harvest-blogs/crusades/2012/08/Crowd.jpg");
+}
+
+#carretera{
+	margin: auto;
+	width: 40%;
+	height: 100%;
+	
+}
+
+#carretera .auto{
+    -ms-transform: rotate(270deg); /* IE 9 */
+    -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
+    transform: rotate(270deg);
+    height: 90px;
+    width: 110px;
+    padding: 20px;
+}

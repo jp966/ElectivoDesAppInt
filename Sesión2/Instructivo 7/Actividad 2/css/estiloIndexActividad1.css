@@ -1,0 +1,11 @@
+#rejilla{
+	border-style: solid;
+	border-width: 1px;
+	float: left;
+	height: 50px;
+}
+
+#fila{
+	background-color: red;
+
+}

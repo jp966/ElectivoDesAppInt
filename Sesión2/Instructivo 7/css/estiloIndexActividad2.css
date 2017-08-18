@@ -1,0 +1,76 @@
+
+
+#contenido-jumbotron{
+	padding: 0px 10px 0px 10px; 
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+	
+
+/*
+
+#celdaIzquierda p{
+	float: left; 
+	padding:0 5px 0 5px;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	/*
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	/*
+	box-sizing: border-box;         /* Opera/IE 8+ */
+	
+/*	
+}
+*/
+
+/*
+#celdaDerecha p{
+	float: right; 
+	padding:0 5px 0 5px;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	/*
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	/*
+	box-sizing: border-box;         /* Opera/IE 8+ */
+
+	
+	
+/*	
+}
+*/
+
+#contenedorLogin{
+	width: 320px; 
+	padding:0px 10px 0px 10px ;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+#contenido-izquierda{
+	float: left;
+	padding:0px 10px 0px 10px ;
+
+}
+
+#contenido-derecha{
+	float: right; 
+	padding:0px 10px 0px 10px ;
+
+	
+
+}
+
+/*
+#footer{
+	position: absolute;
+  	right: 0;
+  	bottom: 0;
+  	left: 0;
+  
+  	
+}
+*/
+
