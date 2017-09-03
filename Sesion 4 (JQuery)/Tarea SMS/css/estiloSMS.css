@@ -1,0 +1,62 @@
+body{
+	background-color: #F2F2F2;
+}
+
+/*
+#textarea-sms{
+	height: 50px;
+	width: 300px;
+	margin:auto;
+}
+
+*/
+
+.output-sms{
+	border:1px solid #A9F5A9;
+	background-color: #FFF;
+	margin:auto;
+	width: 250px;
+	height: 50px;
+	overflow-y: auto;
+	
+  
+}
+
+/*contenido chat*/
+.output-sms p{
+	display: inline-block;
+	padding:5px 5px 5px 5px;
+	/*background-color: #2080df;*/
+	color:black;
+	/*border: 1px solid #BDBDBD;*/
+	margin: 5px 10px 5px 5px;
+	float: left;
+
+	
+
+}
+
+
+.input-sms{
+	margin-top: 10px;
+	margin-left:auto;
+	margin-right:auto;
+	width: 300px;
+	display: flex;
+  	justify-content: center;
+
+}
+
+
+
+.input-sms .boton{
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	width:70px;
+	
+
+}
+
+
+

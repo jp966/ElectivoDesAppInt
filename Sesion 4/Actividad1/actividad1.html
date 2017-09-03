@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="eS">
+<head>
+<title>Actividad 1</title>
+	<meta charset="UTF-8">
+	<!-- Enlazamos los estilos CSS-->
+	<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+	<!-- Creamos un DIV para contener el formulario -->
+	<div id="form">
+
+		<span>Ingrese mínimo y máximo</span>
+
+<!-- Creamos dos input para recuperar los datos
+	ingresados por el usuario -->
+	<div class="row">
+		<div class="col">
+			<input id="input-min" type="text">
+		</div>
+		<div class="col">
+			<p id="barra-intervalo">-</p>
+		</div>
+		<div class="col">
+			<input id="input-max" type="text">
+		</div>
+	</div>
+	<!-- Creamos un botón con el fin de invocar la suma -->
+	<button id="btn">Obtener número al azar</button>
+</div>
+<!-- Creamos in DIV que permita mostrar el resultado de la suma -->
+<div id="resultado"></div>
+<!-- Enlazamos el código JS -->
+<script src="codigo.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="eS">
+<head>
+<title>Ejemplo 2 JS</title>
+	<meta charset="UTF-8">
+	<!-- Enlazamos los estilos CSS-->
+	<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+	<!-- Creamos un DIV para contener el formulario -->
+	<div id="form">
+		<span>Ingrese números:</span>
+<!-- Creamos dos input para recuperar los datos
+	ingresados por el usuario -->
+	<input id="input-uno" type="text" onKeyup="validarEntrada1(this.value);">
+	<input id="input-dos" type="text" onKeyup="validarEntrada2(this.value);">
+	<!-- Creamos un botón con el fin de invocar la suma -->
+	<div class=row>
+
+		<div class="col">
+			<button id="btnSuma">sumar</button>
+		</div>
+		<div class="col">
+			<button id="btnResta">restar</button>
+		</div>
+
+		<div class="col">
+			<button id="btnMulti">multiplicar</button>
+		</div>
+
+		<div class="col">
+			<button id="btnDivision">dividir</button>
+		</div>
+
+	</div>
+</div>
+<!-- Creamos in DIV que permita mostrar el resultado de la suma -->
+<div id="resultado"></div>
+
+<div id="contenedor-alerta">
+	<center>
+	<p class="alerta" id="alerta-1"></p>
+	<p class="alerta" id="alerta-2"></p>
+	</center>
+</div>
+<!-- Enlazamos el código JS -->
+<script src="codigo.js"></script>
+</body>
+</html>

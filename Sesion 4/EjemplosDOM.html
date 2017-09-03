@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ejemplos DOM</title>
+</head>
+<body>
+
+<div id="caja">hola</div>
+<div class="caja"></div>
+<div class="caja"></div>
+<div class="caja"></div>
+
+<button id="btn">Click para abrir un alert</button>
+
+<script type="text/javascript">
+
+	document.getElementById("btn").addEventListener("click", function(){
+		alert("Esto fue disparado por el button");
+	});
+
+
+/*
+
+var div = document.getElementById("caja");
+
+
+var div2=document.getElementsByClassName("caja");
+
+
+var elementos = document.getElementsByTagName("div");
+console.log(elementos);
+
+
+document.getElementById("caja").innerHTML = "He cambiado el texto!";
+*/
+
+</script>
+	
+</body>
+</html>

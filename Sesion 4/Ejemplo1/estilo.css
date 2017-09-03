@@ -1,0 +1,22 @@
+body {
+	background: #fff;
+}
+
+/* Estilos del DIV */
+div {
+	display: table;
+	width: 200px;
+	height: 200px;
+	background: steelblue;
+	margin: 100px auto;
+	cursor: pointer;
+}
+
+/* Estilos del span */
+span {
+	color: #fff;
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+	font-family: Helvetica;
+}
