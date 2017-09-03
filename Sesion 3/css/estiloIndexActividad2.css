@@ -1,0 +1,145 @@
+
+
+#contenido-jumbotron{
+	padding: 0px 10px 0px 10px; 
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+	
+#logo-pagina{
+	width:50px;
+	height: 50px;
+}
+
+#contenedorLogin{
+	width: 320px; 
+	padding:0px 10px 0px 10px ;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+#contenido-izquierda{
+	float: left;
+	padding:0px 10px 0px 10px ;
+
+}
+
+#contenido-derecha{
+	float: right; 
+	padding:0px 10px 0px 10px ;	
+
+}
+
+
+.barra-buscador{
+	padding-top:10px;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+
+#input-busqueda{
+	float: right;
+	margin-left: 5px;
+	margin-top: 0px;
+}
+
+#boton-search{
+	margin-left: 10px;
+	margin-top: 20px;
+}
+
+
+#contenedor-search{
+	float:right;
+	width: 30%;
+	margin-bottom: 10px;
+
+}
+
+
+#jumbo-inicio{
+	color: white;
+	background-image: url("http://cdn.akamai.steamstatic.com/steam/apps/374320/page_bg_generated_v6b.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+
+}
+
+.nopadding {
+   padding: 0 !important;
+   /*margin: 0 !important;*/
+}
+
+p{
+	text-align: justify;
+}
+
+
+#imagen-slide{
+	width:100%;
+	height: 400px;
+}
+
+#imagen-framework{
+	width: 220px;
+	height: 100px;
+}
+
+body{
+	background-color:#f2f2f2;
+}
+
+.texto-footer-form{
+	margin-bottom: 0px;
+	margin-right: 0px;
+	color: white;
+}
+
+#footer{
+	background-color:black;
+}
+
+#logo-watch2{
+	height: 100px;
+}
+
+.carousel-caption {
+    top: 30%;
+    bottom: auto;
+}
+
+.texto-carousel{
+	font-size: 20px;
+}
+
+
+.fondoSign{
+	background-image: url("Imagenes/back.jpg");
+}
+
+#imagen-contacto{
+	margin-left: 20px;
+	width: 200px;
+	height: 200px;
+}
+
+
+
+/*
+#footer{
+	position: absolute;
+  	right: 0;
+  	bottom: 0;
+  	left: 0;
+  
+  	
+}
+*/
+
