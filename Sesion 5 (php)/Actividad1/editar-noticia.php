@@ -20,10 +20,10 @@ if(isset($_POST["titulo"]) && isset($_POST["texto"])){
     header('Location: welcome.php');
     die;
   }
-
+  $id =$_GET['id'];
   $titulo = $db->escape_string($_POST['titulo']);
   $texto = $db->escape_string($_POST['texto']);
-  $result = $db->query("INSERT INTO noticias (titulo, texto) VALUES ('$titulo', '$texto')");
+  $result = $db->query("UPDATE noticias set titulo='$titulo', texto='$texto' where id_noticia=$id");
   if(!$result) {
     $_SESSION['error'] = $db->error;
     header('Location: crear-noticia.php');
