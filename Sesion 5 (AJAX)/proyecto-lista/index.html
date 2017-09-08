@@ -1,0 +1,42 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head> 
+	<meta charset="UTF-8"> 
+	<title>Proyecto Lista</title> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
+	<script> 
+		$(document).on("ready",function(){
+			$("#btn-enviar").click(function(e){ 
+				e.preventDefault(); 
+				var pet = $("form").attr("action"); 
+				var met = $("form").attr("method"); 
+				$.ajax({ url: pet,
+						type: met, 
+						data: $("form").serialize(),
+						beforeSend: function() {
+   							 $('#resultado').html('<img width = "60" height = "60" src=imagenes/loading.gif>');
+  						},
+						success: function(info){ 
+							setTimeout(function() {
+   								$("#resultado").text(info);
+							}, 1000);
+							//$("#resultado").text(info); 
+						}	 
+				}); 
+			}); 
+		}); 
+	</script>
+
+</head> 
+<body> 
+
+	<form action="script.php" method="post"> 
+		Introduce tu nombre: <input type="text" name="user">
+		Introduce tu apellido: <input type="text" name="apellido">
+		Introduce tu edad: <input type="text" name="edad">
+
+		<input type="button" id="btn-enviar" value="Enviar"> </form> 
+	</br> 
+	<div id="resultado"></div> 
+</body> 
+</html>
