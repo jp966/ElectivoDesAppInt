@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>AJAX JQuery2</title>
+  <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <script src="javascript/jquery.min.js"></script>
+  <script src="javascript/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="well">
+      <button class="btn btn-success btn-lg" data-toggle="modal" href='#agregar'>Agregar Persona</button>
+      <table class="table table-condensed table-hover">
+        <thead>
+          <tr class="info">
+            <th>RUT</th>
+            <th>NOMBRE</th>
+            <th>EMAIL</th>
+            <th>TELÉFONO</th>
+            <th>CARGO</th>
+            <th>ACCIÓN</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-registro">
+        <!-- contenido dinámico -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!--MODAL CONFIRMACIÓN DELETE-->
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Va a eliminar un registro!</h4>
+        </div>
+        <div class="modal-body">
+          <p>¿Esta seguro?</p>
+        </div>
+        <div class="modal-footer">
+          <button id="aceptDel" type="button" class="btn btn-default">Aceptar</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!--FIN MODAL CONFIRMACIÓN DELETE-->
+
+  <!-- Modal ingreso persona -->
+  <div class="modal fade" id="agregar">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Formulario para ingresar persona</h4>
+        </div>
+        <div class="modal-body">
+          <form id="form-ingreso">
+            <legend>Nuevo Registro:</legend>
+            <div class="form-group">
+              <input required type="text" class="form-control" placeholder="Ingrese el RUT" name="rut">
+            </div>
+            <div class="form-group">
+              <input required type="text" class="form-control" placeholder="Ingrese Nombre con Apellido" name="nombre">
+            </div>
+            <div class="form-group">
+              <input required type="email" class="form-control" placeholder="Ingrese Correo Electrónico" name="email">
+            </div>
+            <div class="form-group">
+              <input required type="text" class="form-control" placeholder="Ingrese Telefono Móvil" name="telefono">
+            </div>
+            <div class="form-group">
+              <select required name="cargo" class="form-control btn btn-default">
+                <option value="12">Jefe de Proyecto</option>
+                <option value="23">Analista</option>
+                <option value="32">Desarrollador</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-success btn-lg" value="Ingresar">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Fin Modal ingreso persona -->
+
+  <!--MODAL ACTUALIZAR-->
+  <div class="modal fade" id="actualizar">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Formulario para editar persona</h4>
+        </div>
+        <div class="modal-body">
+          <form id="form-actualizar">
+            <legend>Registro seleccionado:</legend>
+            <div class="form-group">
+              <input required type="text" class="form-control" placeholder="RUT" name="rutAct" readonly>
+            </div>
+            <div class="form-group">
+              <input required type="text" class="form-control" placeholder="Ingrese Nombre con Apellido" name="nombreAct">
+            </div>
+            <div class="form-group">
+              <input required type="email" class="form-control" placeholder="Ingrese Correo Electrónico" name="emailAct">
+            </div>
+            <div class="form-group">
+              <input required type="text" class="form-control" placeholder="Ingrese Telefono Móvil" name="telefonoAct">
+            </div>
+            <div class="form-group">
+              <select required name="cargoAct" class="form-control btn btn-default">
+                <option value="12">Jefe de Proyecto</option>
+                <option value="23">Analista</option>
+                <option value="32">Desarrollador</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-success btn-lg" value="Guardar">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--FIN MODAL ACTUALIZAR-->
+  <script src="ajax/create.js"></script>
+  <script src="ajax/delete.js"></script>
+  <script src="ajax/read.js"></script>
+  <script src="ajax/update.js"></script>
+</body>
+</html>
