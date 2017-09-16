@@ -1,0 +1,106 @@
+<!-- Archivo index.html es el archivo principal, este contiene la aplicación que desar
+rollaremos en angular
+además del controlador principal, esta página recibirá toda la lógica que implemente
+mos en nuestro proyecto
+basado en esta tecnologia para el FrontEnd de nuestro sistema -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Actividad Angular</title>
+	<!-- hojas de estilo, Bootstrap 3 y una personalizada -->
+	<link rel="stylesheet" href="lib/css/bootstrap.min.css">
+	<link rel="stylesheet" href="lib/css/estilo.css">
+	<!-- Archivos Javascript -->
+	<script src="lib/js/jquery-3.2.1.min.js"></script>
+	<script src="lib/js/angular.min.js"></script>
+	<!--Archivo para asignat estado-->
+	<script src="lib/js/codigo.js"></script>
+	<!--Framework css-->
+	<script src="lib/js/bootstrap.min.js"></script>
+	<script src="app/directives.js"></script>
+	<script src="app/controllers/AplicacionController.js"></script>
+	<script src="app/app.js"></script>
+</head>
+<body ng-app="app" ng-controller="applicationController">
+
+<!--FORMULARIO NUEVO PERSONAJE -->
+<div class="row-fluid">
+	<div class="col-md-12">
+		<center>
+		<div class="tarjeta form-tarjeta" style="display: block;">
+			<div class="panel-body">
+				<!---Al form se le asigna un nombre y la funcion a su submit-->
+				<form name="formNuevo" ng-submit="setInputs(formNuevo)">
+
+					<div class="row-fluid">
+						<div class="col-md-6">
+							<div class="contenedor-imagen">
+							
+								<div class="form-group"> 
+									<label>Ruta Imagen</label> 
+									<input id="inputImagen" type="text" class="form-control" placeholder="Ruta Imagen" required ng-model="ruta"> 
+								</div>
+
+								<button type="submit" class="btn btn-primary" ng-click='setInputs(form)'>Agregar</button>
+
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="contenedor-datos">
+								<div class="form-group"> 
+									<label>Nombre</label> 
+									<input id="inputNombre" type="text" class="form-control" placeholder="Nombre" required ng-model="nombre"> 
+								</div>
+
+								<div class="form-group"> 
+									<label>Apellido</label> 
+									<input id="inputApellido" type="text" class="form-control" placeholder="Apellido" required ng-model="apellido"> 
+								</div>
+
+								<div class="form-group">
+							      <label>Estado</label>
+							      <select id="inputEstado" class="form-control" required ng-model="estado" ng-options="item for item in estados">
+							      	<!--<option value="" selected disabled>Seleccione estado</option>-->
+							       
+							      </select>
+							    </div>
+								
+							</div>
+						</div>
+					</div>
+				</form>
+				
+			</div>
+		</div>
+		</center>
+	</div>
+</div>
+
+<!--TARJETA PERSONAJE-->
+<div class="row-fluid">
+	<div class="col-md-12">
+		<center>
+			<div mi-panel1>
+
+			</div>
+		</center>
+	</div>
+</div>
+	
+<!--
+	<div class="container">
+		<h1 ng-bind="ejemplo"></h1>
+		<div class="row">
+			<div class="col-lg-4">
+				<div mi-panel1></div>
+			</div>
+			<div class="col-lg-4">
+				<mi-panel2></mi-panel2>
+			</div>
+		</div>
+	</div>
+-->
+</body>
+</html>

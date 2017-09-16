@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF 8">
+	<title>Ejemplo Angular</title>
+	<link rel="stylesheet" href="">
+	<script src="js/angular.min.js"></script>
+	<script >
+		(function(){
+			var app= angular.module("app",[]);
+			app.controller("applicationController", ['$scope',function($scope){
+				// ejemplo es una propiedad
+				$scope.ejemplo='Esto es un ejemplo de Angular JS';
+				// hola() es un método
+				$scope.hola = function(){
+					$scope.ejemplo = 'hola';
+				};
+			}]);
+		})();
+	</script>
+</head>
+	<body ng-app="app" ng-controller="applicationController">
+		{{ejemplo}}
+		<button ng-click="hola()">Hola!<button>
+	</body>
+</html>

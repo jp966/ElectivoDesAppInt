@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ejemplos Angular</title>
+	<script src="js/angular.min.js"></script>
+</head>
+<body ng-app="app" ng-controller="AppController" >
+<!--
+	<form ng-submit="miFuncion()" >
+		<input type="text">
+		<input type="submit">
+	</form>
+	<p> {{texto}} </p>
+	-->
+
+	<ul ng-init ="nombres=['John Snow', 'Ash Ketchum', 'Gary Oak']" >
+		<li ng-repeat="name in nombres">
+			{{name}}
+		</li>
+	</ul>
+
+	<!--muestra segun true o false-->
+	<div ng-show="false">Hola Mundo</div>
+	<!--No muestra los falsos en HTML-->
+	<div ng-if="false"> Hola Mundo</div>
+	<!--Inserta pedazo de codigo del archivo especificado (MOZILLA)-->
+	<div ng-include="'vista.html'"></div>
+
+	<script>
+	
+		var app = angular.module('app', []);
+		app.controller('AppController', function($scope){
+			$scope.texto = 'Aún no presionas el submit';
+			$scope.miFuncion = function () {
+				$scope.texto = 'Presionaste el submit!';
+			};
+		});
+
+		
+
+	</script>
+</body>
+</html>

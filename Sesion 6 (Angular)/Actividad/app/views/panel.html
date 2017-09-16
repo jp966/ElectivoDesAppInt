@@ -1,0 +1,19 @@
+<div class="tarjeta" style="display: inline-block;" ng-repeat="x in ejemplo">
+	<div class="panel-body">
+		<div class="row-fluid">
+			<div class="col-md-6">
+				<div class="contenedor-imagen">
+					<img class="img-personaje" src={{x.imagen}}>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="contenedor-datos">
+					<h2 class="nombre" style="color:black;">{{x.nombre}}</h2>
+					<h2 class="estado" style="color: #660000;">{{x.vivo}}</h2>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>

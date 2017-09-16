@@ -1,0 +1,34 @@
+<!-- Archivo index.html es el archivo principal, este contiene la aplicación que desar
+rollaremos en angular
+además del controlador principal, esta página recibirá toda la lógica que implemente
+mos en nuestro proyecto
+basado en esta tecnologia para el FrontEnd de nuestro sistema -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Ejemplo Angular</title>
+	<!-- hojas de estilo, Bootstrap 3 y una personalizada -->
+	<link rel="stylesheet" href="lib/css/bootstrap.min.css">
+	<link rel="stylesheet" href="lib/css/main.css">
+	<!-- Archivos Javascript -->
+	<script src="lib/js/bootstrap.min.js"></script>
+	<script src="lib/js/angular.min.js"></script>
+	<script src="app/directives.js"></script>
+	<script src="app/controllers/AplicacionController.js"></script>
+	<script src="app/app.js"></script>
+</head>
+<body ng-app="app" ng-controller="applicationController">
+	<div class="container">
+		<h1 ng-bind="ejemplo"></h1>
+		<div class="row">
+			<div class="col-lg-4">
+				<div mi-panel1></div>
+			</div>
+			<div class="col-lg-4">
+				<mi-panel2></mi-panel2>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

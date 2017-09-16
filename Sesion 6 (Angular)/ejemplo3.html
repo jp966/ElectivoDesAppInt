@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ejemplo Filtro</title>
+	<script src="lib/js/angular.min.js"></script>
+</head>
+<body>
+	<ul ng-app="miApp" ng-controller="appCtrl">
+		<li ng-repeat="x in nombres">
+			{{x | miFiltro}}
+		</li>
+	</ul>
+	<script>
+		var app = angular.module('miApp', []);
+		app.filter('miFiltro', function() {
+			return function(x) {
+				var i, c, txt = "";
+				for (i = 0; i < x.length; i++) {
+					c = x[i];
+					if (i % 2 == 0) {
+						c = c.toUpperCase();
+					}
+					txt += c;
+				}
+				return txt;
+			};
+		});
+		app.controller('appCtrl', function($scope) {
+			$scope.nombres = [
+				'Jani',
+				'Carl',
+				'Margareth',
+				'Hege',
+				'Joe',
+				'Gustav',
+				'Birgit',
+				'Mary',
+				'Kai'
+			];
+		});
+	</script>
+<!--
+	<div ng-app="miApp" ng-controller="AppController">
+		<p>Iterando los objetos ordenados por pais:</p>
+		<ul>
+			<li ng-repeat=" x in nombres | orderBy:'pais' ">
+				{{ x.nombre + ', ' + x.pais }}
+			</li>
+		</ul>
+	</div>
+		<script>
+			angular.module('miApp', []).controller('AppController', function($scope) {
+				$scope.nombres = [
+					{ nombre : 'Jani' , pais : 'Noruega' },
+					{ nombre : 'Carl' , pais : 'Suecia' },
+					{ nombre : 'Margareth' , pais : 'Reino Unido' },
+					{ nombre : 'Hege' , pais : 'Noruega' },
+					{ nombre : 'Joe' , pais : 'Dinamarca' },
+					{ nombre : 'Gustav' , pais : 'Suecia' },
+					{ nombre : 'Birgit' , pais : 'Dinamarca' },
+					{ nombre : 'Mary' , pais : 'Reino Unido' },
+					{ nombre : 'Kai' , pais : 'Noruega' }
+				];
+			});
+		</script>
+-->
+</body>
+</html>
