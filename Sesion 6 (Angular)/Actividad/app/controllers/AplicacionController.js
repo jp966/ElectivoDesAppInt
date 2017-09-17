@@ -31,15 +31,19 @@
 		$scope.ruta="";
 		$scope.apellido="";
 		//lista con opciones de estados para el select del formulario
-		$scope.estados=[true,false];
+		$scope.estados=["Vivo","Muerto"];
 		//variable con el estado al que se le asinara la selección
-		$scope.estado=false;
+		$scope.estado="Vivo";
 
 		$scope.setInputs = function(form){
 		  if(form.$valid) {
-		   	$scope.nuevo=[{nombre : $scope.nombre, apellido:$scope.apellido, imagen:$scope.ruta, vivo:$scope.estado}];
-				
+		  	if($scope.estado=="Vivo"){
+		   		$scope.nuevo=[{nombre : $scope.nombre, apellido:$scope.apellido, imagen:$scope.ruta, vivo:true}];
+			}else{
+				$scope.nuevo=[{nombre : $scope.nombre, apellido:$scope.apellido, imagen:$scope.ruta, vivo:false}];
+			}
 			$scope.ejemplo=$scope.ejemplo.concat($scope.nuevo);
+
 		  }
 		};
 
