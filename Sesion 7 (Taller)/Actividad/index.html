@@ -14,7 +14,6 @@ basado en esta tecnologia para el FrontEnd de nuestro sistema -->
 	<!-- Archivos Javascript -->
 	<script src="lib/js/jquery-3.2.1.min.js"></script>
 	<script src="lib/js/angular.min.js"></script>
-	<!--Archivo para asignat estado-->
 	<script src="lib/js/codigo.js"></script>
 	<!--Framework css-->
 	<script src="lib/js/bootstrap.min.js"></script>
@@ -31,21 +30,34 @@ basado en esta tecnologia para el FrontEnd de nuestro sistema -->
 <div class="row-fluid">
 	<div class="col-md-12">
 		<center>
-		<div class="tarjeta form-tarjeta" style="display: block;">
-			<div class="panel-body">
-						<!---Al form se le asigna un nombre y la funcion a su submit-->
-			<input type="text" ng-model="clientes.nombre_completo">
-			<input type="text" ng-model="clientes.email">
-			<input type="text" ng-model="clientes.telefono">
+		<div class="contenedor-form">
 
-			<button ng-click="agregarCliente()">Agregame 1313</button>
+			<form name="formCliente">
+					<div class="row-fluid">
+						<div class="col-md-6">
+							<h2>Nuevo Cliente</h2>
+								<div class="form-group"> 
+									<label>Nombre completo</label> 
+									<input type="text" class="form-control" placeholder="Nombre completo" required ng-model="clientes.nombre_completo"> 
+								</div>
 
+								<div class="form-group"> 
+									<label>Email</label> 
+									<input type="text" class="form-control" placeholder="Email" required ng-model="clientes.email"> 
+								</div>
 
+								<div class="form-group">
+							      <label>Teléfono</label>
+							     <input type="text" class="form-control" placeholder="Teléfono" required ng-model="clientes.telefono"> 
 
-				
-			</div>
+							    </div>
+								<button class="btn btn-primary" ng-click="agregarCliente(formCliente)">Agregar cliente</button>
+						</div>
+					</div>
+				</form>	
+						
 		</div>
-		</center>
+	</center>
 	</div>
 </div>
 
@@ -54,31 +66,60 @@ basado en esta tecnologia para el FrontEnd de nuestro sistema -->
 	<div class="col-md-12">
 		<center>
 			<h2>Lista Clientes</h2>
-			<div>
-<ul>
-	<li ng-repeat="x in totalClientes">
-		{{x.nombre_completo +" "+x.email+" "+x.telefono}}
-	</li>
-</ul>
+			<div class="container">
+
+			<table class="table">
+
+			    <thead>
+			      <tr>
+			        <th>Nombre completo</th>
+			        <th>Email</th>
+			        <th>Teléfono</th>
+			        <th>Acción</th>
+			      </tr>
+			    </thead>
+
+		    	<tbody>
+		     		<tr ng-repeat="x in totalClientes1">
+
+		     			<td> 
+							<input type="text" class="form-control" placeholder="Nombre completo" value={{x.nombre_completo}} ng-model=x.nombre_completo disabled="true" required> 
+		     			</td>
+
+		     			<td> 
+							<input type="text" class="form-control" placeholder="Email" value={{x.email}} ng-model=x.email disabled="true" required> 
+		     			</td>
+
+		     			<td> 
+							<input type="text" class="form-control" placeholder="Teléfono" value={{x.telefono}} ng-model=x.telefono disabled="true" required> 
+		     			</td>
+
+						<td>
+							<button class="btn btn-danger" ng-click="eliminarCliente(x)">Eliminar</button>
+
+							<button id="btnModificar" class="btn btn-warning">Modificar</button>
+
+						</td>
+
+				    </tr>
+
+		   		</tbody>
+		  </table>
+
+			<!--	
+			<ul>
+				<li ng-repeat="x in totalClientes">
+					{{"Nombre: "+x.nombre_completo +" "+x.email+" "+x.telefono}}
+
+				</li>
+			</ul>
+			-->
 
 
 			</div>
 		</center>
 	</div>
 </div>
-	
-<!--
-	<div class="container">
-		<h1 ng-bind="ejemplo"></h1>
-		<div class="row">
-			<div class="col-lg-4">
-				<div mi-panel1></div>
-			</div>
-			<div class="col-lg-4">
-				<mi-panel2></mi-panel2>
-			</div>
-		</div>
-	</div>
--->
+
 </body>
 </html>

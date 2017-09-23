@@ -2,7 +2,6 @@
 (function () {
 	var controlador = angular.module('app');
 	controlador.controller('applicationController', ['$scope','$localStorage', function($scope,$localStorage){
-		//$scope.ejemplo='Esto es un ejemplo de Angular JS';
 
 		$scope.clientes=
 			{
@@ -12,23 +11,12 @@
 			};
 
 		var totalClientes = [];	
-
+		//toma el valor almacenado de clientes en localStorage o e de un arreglo vacío
 		totalClientes = $localStorage.clientes || [];
-
-		$scope.totalClientes = totalClientes;
- 
-
-
-		//Guardar clientes
-		//localStorage.setItem('clientes', JSON.stringify($scope.clientes));
-		
-		
+		//la variable del $scope tomara el valor del total cliente creado de forma local
+		$scope.totalClientes1 = totalClientes;
 
 		/*
-		$scope.capital={
-			capital_actual: int
-		};
-		
 		$scope.cuotas= [{
 		       id: 1,
 		       n_cuotas: 1,
@@ -65,37 +53,35 @@
 	   }];
 	   */
 
-	   $scope.agregarCliente = function() {
+	   $scope.agregarCliente = function(form) {
+
+	   	if(form.$valid){
 	  	 		
-	   			console.log($scope.clientes);
-	   			totalClientes.push($scope.clientes);
+	   		//a totalClientes local se le agrega el nuevo cliente (de formulario) con push
+	   		totalClientes.push($scope.clientes);
+	   		//al totalClientes del scope (el que recorre ng-repeat) se le asigna el totalClientes local (con nuevo cliente)
+			$scope.totalClientes1 = totalClientes;
+			//a clientes del localStorage se les asigna el valor de totalClientes local
+			$localStorage.clientes = totalClientes;
 
-				$scope.totalClientes = totalClientes;
-				console.log('con scope');
-				console.log($scope.totalClientes);
+			//se limpian los valores del cliente agregado anteriormente
+			$scope.clientes=
+				{
+					nombre_completo:'',
+					email:'',
+					telefono:''
+				};
 
-				$localStorage.clientes = totalClientes;
-				$scope.clientes=
-					{
-						nombre_completo:'',
-						email:'',
-						telefono:''
-					};
-
-
-				/*
-				var retrievedObject = JSON.parse(localStorage.getItem('clientes'));
-
-				retrievedObject=retrievedObject.concat($scope.nuevo);
-
-				localStorage.setItem('clientes',JSON.stringify(retrievedObject));
-
-				console.log(localStorage.getItem('clientes'));
-				*/
-
-			
+			}
 
 		};
+
+
+		$scope.eliminarCliente=function(cliente){
+			//en la posicion del objeto cliente, eliminar 1 item
+			$localStorage.clientes.splice($localStorage.clientes.indexOf(cliente), 1);
+
+		}
 
 		/*
 		$scope.ejemplo = [
