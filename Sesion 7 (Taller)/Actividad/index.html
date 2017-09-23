@@ -49,7 +49,7 @@ basado en esta tecnologia para el FrontEnd de nuestro sistema -->
 								<div class="form-group">
 							      <label>Teléfono</label>
 							     <input type="text" class="form-control" placeholder="Teléfono" required ng-model="clientes.telefono"> 
-
+		
 							    </div>
 								<button class="btn btn-primary" ng-click="agregarCliente(formCliente)">Agregar cliente</button>
 						</div>
@@ -73,7 +73,7 @@ basado en esta tecnologia para el FrontEnd de nuestro sistema -->
 
 </div>
 
-<!--CLINTES-->
+<!--LISTA CLINTES-->
 <div class="row-fluid">
 	<div class="col-md-12">
 		<center>
@@ -125,8 +125,55 @@ basado en esta tecnologia para el FrontEnd de nuestro sistema -->
 	</div>
 </div>
 
+<!--LISTA DEUDAS-->
+<div class="row-fluid" ng-controller="capitalController">
+	<div class="col-md-12">
+		<center>
+			<h2>Lista Deudas</h2>
+			<div class="container">
+
+			<table class="table">
+
+			    <thead>
+			      <tr>
+			        <th>Nombre completo</th>
+			        <th>idCuota</th>
+			        <th>Prestamo</th>
+			        <th>Total</th>
+			      </tr>
+			    </thead>
+
+		    	<tbody>
+		     		<tr ng-repeat="x in totalDeudas">
+
+		     			<td> 
+							<input type="text" class="form-control" value={{x.nombre_completo}} readonly> 
+		     			</td>
+
+		     			<td> 
+							<input type="number" class="form-control"  value={{x.cuota_id}} readonly> 
+		     			</td>
+
+		     			<td> 
+							<input type="text" class="form-control" value={{x.prestamo}} readonly> 
+		     			</td>
+
+		     			<td> 
+							<input type="text" class="form-control" value={{x.total}} readonly> 
+		     			</td>
+
+				    </tr>
+
+		   		</tbody>
+		  </table>
+
+			</div>
+		</center>
+	</div>
+</div>
+
 <!--MODAL PRESTAMO-->
-  <div class="modal fade" id="prestamo">
+  <div class="modal fade" id="prestamo" ng-controller="capitalController">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -134,43 +181,42 @@ basado en esta tecnologia para el FrontEnd de nuestro sistema -->
           <h4 class="modal-title">Formulario para ingresar Prestamo</h4>
         </div>
         <div class="modal-body">
-          <form id="form-prestamo">
+
+          <form name="formPrestamo">
             <legend>Cliente:</legend>
 
             <div class="form-group">
             	<label>Nombre completo</label>
-              	<input class="form-control" name="nombre" disabled="true">
+              	<input class="form-control" ng-model="nombreCliente" readonly>
             </div>
             <div class="form-group">
             	<label>Email</label>
-              	<input class="form-control" name="email" disabled="true">
+              	<input class="form-control"  ng-model="emailCliente" readonly>
             </div>
             <div class="form-group">
             	<label>Telefono</label>
-            	<input class="form-control" name="telefono" disabled="true">
+            	<input class="form-control" ng-model="telefonoCliente" readonly>
             </div>
        
          	<legend>Prestamo:</legend>
 
 			 <div class="form-group">
 			 	<label>Monto</label>
-              	<input type="number" class="form-control" placeholder="Ingrese monto" required>
+              	<input type="number" class="form-control" placeholder="Ingrese monto" required ng-model="prestamoCliente">
             </div>
 
             <div class="form-group">
 				<label>N° cuotas</label>
-             	<input type="number" class="form-control" placeholder="Ingrese n° cuotas" required>
+             	<select class="form-control" required ng-model="nCuotasPrestamo" ng-options="item for item in arrayNumCuotas"></select>
             </div>
-
-            <div class="form-group">
-              <input type="submit" class="btn btn-success btn-lg" value="Ingresar">
-            </div>
+			
+              <button class="btn btn-success" ng-click="agregarDeuda(formPrestamo)">Ingresar</button>
           </form>
         </div>
       </div>
     </div>
   </div>
-  <!-- Fin Modal ingreso persona -->
+  <!-- FIN MODAL PRESTAMO-->
 
 </body>
 </html>

@@ -56,7 +56,6 @@
 	   $scope.agregarCliente = function(form) {
 
 	   	if(form.$valid){
-	  	 		
 	   		//a totalClientes local se le agrega el nuevo cliente (de formulario) con push
 	   		totalClientes.push($scope.clientes);
 	   		//al totalClientes del scope (el que recorre ng-repeat) se le asigna el totalClientes local (con nuevo cliente)

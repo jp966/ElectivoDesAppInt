@@ -15,11 +15,14 @@
 				var email =$(this).closest('tr').children('td').find('#inputEmail').val();
 				var telefono=$(this).closest('tr').children('td').find('#inputTelefono').val();
 
-				$("input[name='nombre']").val(nombre);
-				$("input[name='email']").val(email);
-				$("input[name='telefono']").val(telefono);
+				$("input[ng-model='nombreCliente']").attr('value',nombre).trigger('change');
+				$("input[ng-model='emailCliente']").attr('value',email).trigger('change');
+				$("input[ng-model='telefonoCliente']").attr('value',telefono).trigger('change');
 			});
 
+	$(document).on("submit","#prestamo",function(){
+		 $("#prestamo").modal('hide');
+	})
 
 		
 	});
