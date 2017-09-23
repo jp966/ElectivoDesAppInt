@@ -20,21 +20,21 @@ basado en esta tecnologia para el FrontEnd de nuestro sistema -->
 	<script src="app/directives.js"></script>
 	<script src="app/app.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
-	<script src="app/controllers/AplicacionController.js"></script>
-
+	<script src="app/controllers/capitalController.js"></script>
+	<script src="app/controllers/clienteController.js"></script>
 
 </head>
-<body ng-app="app" ng-controller="applicationController">
+<body  ng-app="app" ng-controller="clienteController">
 
 <!--FORMULARIO NUEVO CLIENTE-->
 <div class="row-fluid">
-	<div class="col-md-12">
-		<center>
+	<div class="col-md-6">
+		
 		<div class="contenedor-form">
 
 			<form name="formCliente">
 					<div class="row-fluid">
-						<div class="col-md-6">
+						<div class="col-md-12">
 							<h2>Nuevo Cliente</h2>
 								<div class="form-group"> 
 									<label>Nombre completo</label> 
@@ -54,11 +54,23 @@ basado en esta tecnologia para el FrontEnd de nuestro sistema -->
 								<button class="btn btn-primary" ng-click="agregarCliente(formCliente)">Agregar cliente</button>
 						</div>
 					</div>
-				</form>	
-						
+				</form>			
 		</div>
-	</center>
+	
 	</div>
+
+	<div class="col-md-6">
+	<div class="contenedor-izquierda">
+		<h1>Capital: </h1>
+		<div class="contenedor-capital" ng-controller="capitalController">
+			<h2>{{capital_actual}}</h2>
+
+		</div>
+	</div>
+	</div>
+
+
+
 </div>
 
 <!--CLINTES-->
@@ -80,24 +92,26 @@ basado en esta tecnologia para el FrontEnd de nuestro sistema -->
 			    </thead>
 
 		    	<tbody>
-		     		<tr ng-repeat="x in totalClientes1">
+		     		<tr ng-repeat="x in totalClientes">
 
 		     			<td> 
-							<input type="text" class="form-control" placeholder="Nombre completo" value={{x.nombre_completo}} ng-model=x.nombre_completo disabled="true" required> 
+							<input id="inputNombre" type="text" class="form-control" placeholder="Nombre completo" value={{x.nombre_completo}} ng-model=x.nombre_completo disabled="true" required> 
 		     			</td>
 
 		     			<td> 
-							<input type="text" class="form-control" placeholder="Email" value={{x.email}} ng-model=x.email disabled="true" required> 
+							<input id="inputEmail" type="text" class="form-control" placeholder="Email" value={{x.email}} ng-model=x.email disabled="true" required> 
 		     			</td>
 
 		     			<td> 
-							<input type="text" class="form-control" placeholder="Teléfono" value={{x.telefono}} ng-model=x.telefono disabled="true" required> 
+							<input id="inputTelefono" type="text" class="form-control" placeholder="Teléfono" value={{x.telefono}} ng-model=x.telefono disabled="true" required> 
 		     			</td>
 
 						<td>
 							<button class="btn btn-danger" ng-click="eliminarCliente(x)">Eliminar</button>
 
 							<button id="btnModificar" class="btn btn-warning">Modificar</button>
+
+							<button id="btnPrestamo" class="btn btn-success" data-toggle="modal" href="#prestamo">Prestamo</button>
 
 						</td>
 
@@ -106,20 +120,57 @@ basado en esta tecnologia para el FrontEnd de nuestro sistema -->
 		   		</tbody>
 		  </table>
 
-			<!--	
-			<ul>
-				<li ng-repeat="x in totalClientes">
-					{{"Nombre: "+x.nombre_completo +" "+x.email+" "+x.telefono}}
-
-				</li>
-			</ul>
-			-->
-
-
 			</div>
 		</center>
 	</div>
 </div>
+
+<!--MODAL PRESTAMO-->
+  <div class="modal fade" id="prestamo">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Formulario para ingresar Prestamo</h4>
+        </div>
+        <div class="modal-body">
+          <form id="form-prestamo">
+            <legend>Cliente:</legend>
+
+            <div class="form-group">
+            	<label>Nombre completo</label>
+              	<input class="form-control" name="nombre" disabled="true">
+            </div>
+            <div class="form-group">
+            	<label>Email</label>
+              	<input class="form-control" name="email" disabled="true">
+            </div>
+            <div class="form-group">
+            	<label>Telefono</label>
+            	<input class="form-control" name="telefono" disabled="true">
+            </div>
+       
+         	<legend>Prestamo:</legend>
+
+			 <div class="form-group">
+			 	<label>Monto</label>
+              	<input type="number" class="form-control" placeholder="Ingrese monto" required>
+            </div>
+
+            <div class="form-group">
+				<label>N° cuotas</label>
+             	<input type="number" class="form-control" placeholder="Ingrese n° cuotas" required>
+            </div>
+
+            <div class="form-group">
+              <input type="submit" class="btn btn-success btn-lg" value="Ingresar">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Fin Modal ingreso persona -->
 
 </body>
 </html>
