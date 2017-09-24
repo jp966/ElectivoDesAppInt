@@ -1,7 +1,7 @@
 'use strict';
 (function () {
 	var controlCapital = angular.module('app');
-	controlCapital.controller('capitalController', ['$scope','$localStorage', function($scope,$localStorage){
+	controlCapital.controller('capitalController', ['$scope','$localStorage','$window', function($scope,$localStorage,$window){
 
 		//CAPITAL
 		var capital_actual=$localStorage.capital || 10000000;
@@ -15,27 +15,7 @@
 		$scope.prestamoCliente=null;
 		$scope.arrayNumCuotas=[1,3,6,9];
 		$scope.nCuotasPrestamo=$scope.arrayNumCuotas[0];
-
-		/*
-
-		 $scope.deudas=[{
-	       cliente: {
-	               nombre_completo: '',
-	               email: '',
-	               telefono: ''
-	           },
-	       cuota_id: 0,
-	       cuotas: [
-	           {
-	               valor: 0,
-	               pagado: false
-	           }
-	       ],
-	       prestamo: 0,
-	       total:0
-	   }];
-	   */
-
+	
 	   var totalDeudas=[];
 	   totalDeudas=$localStorage.deudas || [];
 	   $scope.totalDeudas=totalDeudas;
@@ -58,8 +38,7 @@
 		       interes: 25
 		   }];
 
-		
-
+	
 	
 	   $scope.agregarDeuda = function(formulario) {
 
@@ -81,7 +60,6 @@
 	   				interes=$scope.cuotas[i].interes;
 	   			}
 	   		}
-
 	   		var totalPrestamo=prestamo + (prestamo * (interes / 100));
 	   		var totalCuota=totalPrestamo/n_cuotas;
 
@@ -121,13 +99,14 @@
 			$localStorage.deudas = totalDeudas;
 
 			//CAPITAL
-			capital_actual=capital_actual-prestamo;
+			capital_actual=capital_actual-totalPrestamo;
 			$scope.capital_actual=capital_actual;
 			$localStorage.capital=capital_actual;
 
 			$scope.prestamoCliente=null;
 			$scope.nCuotasPrestamo=null;
-			 
+
+			$window.location.reload();
 			
 			}
 

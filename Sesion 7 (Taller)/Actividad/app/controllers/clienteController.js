@@ -1,7 +1,7 @@
 'use strict';
 (function () {
 	var controlador = angular.module('app');
-	controlador.controller('clienteController', ['$scope','$localStorage', function($scope,$localStorage){
+	controlador.controller('clienteController', ['$scope','$localStorage','$window', function($scope,$localStorage,$window){
 
 		$scope.clientes=
 			{
@@ -73,6 +73,8 @@
 
 			}
 
+			$window.location.reload();
+
 		};
 
 		
@@ -80,6 +82,8 @@
 		$scope.eliminarCliente=function(cliente){
 			//en la posicion del objeto cliente, eliminar 1 item
 			$localStorage.clientes.splice($localStorage.clientes.indexOf(cliente), 1);
+
+			$window.location.reload();
 
 		}
 
