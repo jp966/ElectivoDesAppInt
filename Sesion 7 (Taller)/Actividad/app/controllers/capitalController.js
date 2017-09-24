@@ -18,6 +18,7 @@
 
 		//booleano para activar campos de formulario de prestamos
 		$scope.prestamoHabilitado=false;
+		
 
 		//arreglo de clientes clickeados para revisar deudas
 		var deudor=[];
@@ -51,6 +52,9 @@
 			$scope.prestamoHabilitado=true;
 		}
 
+
+		
+
 		$scope.agregarClienteDeudor=function(cliente){
 
 			$localStorage.deudor =cliente;
@@ -69,6 +73,30 @@
 
 			$window.location.reload();
 
+
+		}
+
+		$scope.pagarCuota=function(cuota,pago){
+			
+			for(var i=0;i<$localStorage.deudas.length;i++){
+				if($localStorage.deudas[i].cliente.nombre_completo==pago.cliente.nombre_completo){
+					for(var j=0;j<$localStorage.deudas[i].cuotas.length;j++){
+						if($localStorage.deudas[i].cuotas[j].pagado==false){
+							$localStorage.deudas[i].cuotas[j].pagado=true;
+
+							capital_actual=capital_actual+cuota.valor;
+							$scope.capital_actual=capital_actual;
+							$localStorage.capital=capital_actual;
+
+						
+						}
+					}
+				}
+			}
+
+
+
+			$window.location.reload();
 
 		}
 	
@@ -137,9 +165,11 @@
 
 			$scope.prestamoCliente=null;
 			$scope.nCuotasPrestamo=null;
+			
 
 			$window.location.reload();
-			
+
+
 			}
 
 		};

@@ -43,7 +43,7 @@ basado en esta tecnologia para el FrontEnd de nuestro sistema -->
 
 								<div class="form-group"> 
 									<label>Email</label> 
-									<input type="text" class="form-control" placeholder="Email" required ng-model="clientes.email"> 
+									<input type="email" class="form-control" placeholder="Email" required ng-model="clientes.email"> 
 								</div>
 
 								<div class="form-group">
@@ -93,7 +93,7 @@ basado en esta tecnologia para el FrontEnd de nuestro sistema -->
 
 								<div class="form-group"> 
 									<label>Monto: </label> 
-									<input type="number" class="form-control" required ng-model="prestamoCliente" placeholder="Ingrese monto" ng-disabled="!prestamoHabilitado"> 
+									<input type="number" min="1" class="form-control" required ng-model="prestamoCliente" placeholder="Ingrese monto" ng-disabled="!prestamoHabilitado"> 
 								</div>
 
 								<div class="form-group"> 
@@ -223,13 +223,13 @@ basado en esta tecnologia para el FrontEnd de nuestro sistema -->
 	</div>
 </div>
 
-
+<!--Lista cuotas deudas-->
 	<div class="row-fluid" ng-controller="capitalController">
 		<div class="col-md-12">
 			<center>
 			<h2>Cuotas Deudas</h2>
 			<div class="container">
-			
+
 			<table class="table" ng-repeat="pago in deudor">
 			    <thead>
 			      <tr>
@@ -245,12 +245,17 @@ basado en esta tecnologia para el FrontEnd de nuestro sistema -->
 							<input type="text" class="form-control" value=${{x.valor}} readonly>
 		     			</td>
 
-		     			<td> 
-							<input type="text" class="form-control" value={{x.pagado}} readonly> 
+		     			<td ng-show={{x.pagado}}> 
+							<input type="text" class="form-control" value="Pagado" readonly> 
+		     			</td>
+
+		     			<td ng-show=!{{x.pagado}}> 
+							<input type="text" class="form-control" value="No Pagado" readonly> 
 		     			</td>
 
 		     			<td>
-		     				<button class="btn btn-success">Pagar</button>
+		     				<button class="btn btn-success" ng-click="pagarCuota(x,pago)" ng-disabled={{x.pagado}}>Pagar Todo</button>
+		     				<!--El valor del disabled se actualiza al volver a hacerle click al botón de "ver cuotas" (por alguna razón), así se podrán apreciar los cambios en el estado de las cuotas y el botón-->
 		     			</td>
 
 				    </tr>
