@@ -15,6 +15,9 @@
 		$scope.prestamoCliente=null;
 		$scope.arrayNumCuotas=[1,3,6,9];
 		$scope.nCuotasPrestamo=$scope.arrayNumCuotas[0];
+
+		
+		$scope.prestamoHabilitado=false;
 	
 	   var totalDeudas=[];
 	   totalDeudas=$localStorage.deudas || [];
@@ -38,7 +41,10 @@
 		       interes: 25
 		   }];
 
-	
+		$scope.activarFormulario=function(){
+			$scope.prestamoHabilitado=true;
+			alert(prestamoHabilitado);
+		}
 	
 	   $scope.agregarDeuda = function(formulario) {
 
@@ -99,7 +105,7 @@
 			$localStorage.deudas = totalDeudas;
 
 			//CAPITAL
-			capital_actual=capital_actual-totalPrestamo;
+			capital_actual=capital_actual-prestamo;
 			$scope.capital_actual=capital_actual;
 			$localStorage.capital=capital_actual;
 
