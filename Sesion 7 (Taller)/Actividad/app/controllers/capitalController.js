@@ -8,7 +8,7 @@
 
 		$scope.capital_actual=capital_actual;
 
-		//VARIABLES A TRAER DE FORMULARIO
+		//VARIABLES A TRAER DE FORMULARIO PARA AGREGAR PRESTAMO
 		$scope.nombreCliente="";
 		$scope.emailCliente="";
 		$scope.telefonoCliente="";
@@ -16,9 +16,15 @@
 		$scope.arrayNumCuotas=[1,3,6,9];
 		$scope.nCuotasPrestamo=$scope.arrayNumCuotas[0];
 
-		
+		//booleano para activar campos de formulario de prestamos
 		$scope.prestamoHabilitado=false;
+
+		//arreglo de clientes clickeados para revisar deudas
+		var deudor=[];
+		deudor=$localStorage.deudor || [];
+		$scope.deudor=deudor;
 	
+		//arreglo de deudas
 	   var totalDeudas=[];
 	   totalDeudas=$localStorage.deudas || [];
 	   $scope.totalDeudas=totalDeudas;
@@ -43,7 +49,27 @@
 
 		$scope.activarFormulario=function(){
 			$scope.prestamoHabilitado=true;
-			alert(prestamoHabilitado);
+		}
+
+		$scope.agregarClienteDeudor=function(cliente){
+
+			$localStorage.deudor =cliente;
+			var nomCliente=$localStorage.deudor.nombre_completo;
+
+			$localStorage.deudor=[];
+
+			for(var i=0;i<$localStorage.deudas.length;i++){
+				if($localStorage.deudas[i].cliente.nombre_completo==nomCliente){
+
+					var prestamosDeudor=$localStorage.deudas[i];
+					$localStorage.deudor=$localStorage.deudor.concat(prestamosDeudor);
+					$scope.deudor=$localStorage.deudor;
+				}
+			}
+
+			$window.location.reload();
+
+
 		}
 	
 	   $scope.agregarDeuda = function(formulario) {
@@ -75,7 +101,7 @@
 
 	   		for(var i=0;i<n_cuotas;i++){
 	   			var cuotasTemp={
-	   				varlor:totalCuota,
+	   				valor:totalCuota,
 	   				pagado:false
 	   			}
 
