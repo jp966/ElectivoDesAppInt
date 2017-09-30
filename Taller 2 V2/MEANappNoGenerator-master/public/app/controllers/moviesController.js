@@ -25,11 +25,35 @@ function deudasController($location,$scope,localStorageService){
 	   var capital_actual=JSON.parse(localStorageService.get('capital'));
 	   $scope.capital_actual=capital_actual;
 
+	   //funcion creada solo para probar cosas
+	   $scope.pagarCuotas=function(cuotas){
+	   		for(var i=0;i<cuotas.length;i++){
+	   			if(cuotas[i].pagado==false){
+
+		   			cuotas[i].pagado=true;
+
+
+
+		   			localStorageService.set('deudas',JSON.stringify(totalDeudas));
+
+		   			totalDeudas=JSON.parse(localStorageService.get('deudas'));
+		   			$scope.totalDeudas=totalDeudas;
+
+		   			capital_actual=capital_actual+cuotas[i].valor;
+		   			$scope.capital_actual=capital_actual;
+					localStorageService.set('capital',JSON.stringify(capital_actual));
+				}
+	   		}
+
+	   	
+	   }
+
+
+
+	   /*
 	   $scope.pagarCuotas=function(cuota,deudor){
 
-	   	var deudas=JSON.parse(localStorageService.get('deudas'));
-
-	  
+	   		var deudas=JSON.parse(localStorageService.get('deudas'));
 
 			for(var i=0;i<deudas.length;i++){
 				if(deudas[i].cliente.nombre_completo==deudor.nombre_completo){
@@ -55,7 +79,7 @@ function deudasController($location,$scope,localStorageService){
 			}
 
 		}
-
+		*/
 	   
 	   //arreglo de clientes clickeados para revisar deudas
 	   /*

@@ -115,19 +115,44 @@ function testController($location, $scope, localStorageService){
 	
 
 		$scope.guardarModificacion=function(){
+			//Se busca el cliente en localstorage a partir del cliente temporal creado
 			var clientes=JSON.parse(localStorageService.get('clientes'));
 
 			for(var i=0;i<clientes.length;i++){
-				if(clientes[i]==$scope.clienteTemporal){
-					cliente[i].nombre_completo=$scope.usuario.nombre_completo;
-					cliente[i].email=$scope.usuario.email;
-					cliente[i].telefono=$scope.usuario.telefono;
+				if(clientes[i].nombre_completo+""+clientes[i].email+""+clientes[i].telefono==
+					$scope.clienteTemporal.nombre_completo+""+$scope.clienteTemporal.email+""+$scope.clienteTemporal.telefono){
+
+					clientes[i].nombre_completo=$scope.usuario.nombre_completo;
+					clientes[i].email=$scope.usuario.email;
+					clientes[i].telefono=$scope.usuario.telefono;
 					break;
 				}
 			}
 
-			localStorageService.set('clientes',JSON.stingify(clientes));
+			//se busca el cliente dentro de las deudas si es que hay
+			var deudas=JSON.parse(localStorageService.get('deudas'));
 
+			if(deudas!=null){
+				for(var i=0;i<deudas.length;i++){
+					if(deudas[i].cliente.nombre_completo+""+deudas[i].cliente.telefono==
+						$scope.clienteTemporal.nombre_completo+""+$scope.clienteTemporal.telefono){
+
+						deudas[i].cliente.nombre_completo=$scope.usuario.nombre_completo;
+						deudas[i].cliente.email=$scope.usuario.email;
+						deudas[i].cliente.email=$scope.usuario.telefono;
+					}
+				}
+
+
+				localStorageService.set('deudas',JSON.stringify(deudas));
+			}
+
+			localStorageService.set('clientes',JSON.stringify(clientes));
+			//para actualizar la lista de clientes de inmediato
+			$scope.clientes=clientes;
+
+			$scope.modificar=false;
+			$scope.clienteTemporal=null;
 		}
 
 
@@ -208,6 +233,9 @@ function testController($location, $scope, localStorageService){
 
 			$scope.prestamo.montoPrestamo='';
 			$scope.prestamo.cantidadCuotas='';
+
+			//el formulario desaparecerá
+			$scope.habilitar=!$scope.habilitar;
 			
 
 			}
