@@ -1,0 +1,93 @@
+<!-- 
+	div.row-fluid*2>div.col-s4*3>input -->
+
+
+
+<div class="container-fluid" ng-controller="testController">
+
+	<h2>{{capital_actual | currency:'CLP '}}</h2>
+
+
+	<table class="table table-inverse">
+	  <thead>
+	    <tr>
+	      <th>Nombre Completo</th>
+	      <th>Email</th>
+	      <th>Telefono</th>
+	      <th>Acciones</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr ng-repeat="cliente in clientes">
+	      <td>{{cliente.nombre_completo}}</td>
+	      <td>{{cliente.email}}</td>
+	      <td>{{cliente.telefono}}</td>
+	      <td>
+		      <button class="btn btn-light" type="button" ng-click="mostrarVentanita(cliente.nombre_completo, cliente.telefono,cliente.email)">Prestamo</button>
+
+		      <button class="btn btn-danger" type="button" ng-click="eliminarCliente(cliente)">Eliminar</button>
+
+		      <button class="btn btn-warning" type="button" ng-click="mostrarModificar(cliente)">Modificar</button>
+	  	  </td>
+	    </tr>
+	  </tbody>
+	</table>
+
+<!--FORMULARIO PRESTAMO-->
+	<form name="formDeuda" ng-submit="agregarDeuda(formDeuda)" ng-if="habilitar">
+	  <div class="form-group">
+	    <label >Nombre Completo</label>
+	    <input type="text" class="form-control" placeholder="Ingrese el nombre" ng-model="usuario.nombre_completo" disabled>
+	  </div>
+
+	  <div class="form-group">
+	    <label f>Email</label>
+	    <input type="text" class="form-control" placeholder="Ingrese el telefono" ng-model="usuario.email" disabled>
+	  </div>
+
+	  <div class="form-group">
+	    <label f>Telefono</label>
+	    <input type="text" class="form-control" placeholder="Ingrese el telefono" ng-model="usuario.telefono" disabled>
+	  </div>
+
+	<div class="form-group">
+	    <label f>Monto préstamo</label>
+	    <input type="number" min="1" class="form-control" placeholder="Ingrese monto préstamo" ng-model="prestamo.montoPrestamo" required>
+	  </div>
+
+	   <div class="form-group">
+	    <label f>Cantidad cuotas</label>
+	    <select class="custom-select" ng-model="prestamo.cantidadCuotas">
+
+		  <option value="1">1</option>
+		  <option value="3">3</option>
+		  <option value="6">6</option>
+		  <option value="9">9</option>
+
+		</select>
+	  </div>
+
+	  <button type="submit" class="btn btn-primary">Agregar Prestamo</button>
+	</form>
+
+<!--FORMULARIO DE MODIFICACIÓN DE USUARIO-->
+<form name="formModificar" ng-submit="guardarModificacion()" ng-if="modificar">
+	  <div class="form-group">
+	    <label >Nombre Completo</label>
+	    <input type="text" class="form-control" placeholder="Ingrese el nombre" ng-model="usuario.nombre_completo" required>
+	  </div>
+
+	  <div class="form-group">
+	    <label f>Email</label>
+	    <input type="text" class="form-control" placeholder="Ingrese el telefono" ng-model="usuario.email" required>
+	  </div>
+
+	  <div class="form-group">
+	    <label f>Telefono</label>
+	    <input type="text" class="form-control" placeholder="Ingrese el telefono" ng-model="usuario.telefono" required>
+	  </div>
+
+	  <button type="submit" class="btn btn-primary">Guardar cambios</button>
+	</form>
+
+</div>

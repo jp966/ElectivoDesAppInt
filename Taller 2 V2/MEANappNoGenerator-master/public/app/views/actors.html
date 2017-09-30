@@ -1,0 +1,25 @@
+<div class="container-fluid" ng-controller="clientController">
+	
+	<h2>{{capital_actual | currency:'CLP '}}</h2>
+	
+	<form ng-submit="agregarCliente()" >
+	  <div class="form-group">
+	    <label >Nombre Completo</label>
+	    <input type="text" class="form-control" placeholder="Ingrese el nombre" ng-model="nuevoCliente.nombre_completo" required>
+	  </div>
+
+
+	<div class="form-group">
+	    <label f>Email</label>
+	    <input type="email" class="form-control" placeholder="Ingrese el telefono" ng-model="nuevoCliente.email" required>
+	  </div>
+
+	  <div class="form-group">
+	    <label f>Telefono</label>
+	    <input type="text" class="form-control" placeholder="Ingrese el telefono" ng-model="nuevoCliente.telefono" required>
+	  </div>
+
+	  <button type="submit" class="btn btn-primary">Agregar Cliente</button>
+	</form>
+</div>
+
