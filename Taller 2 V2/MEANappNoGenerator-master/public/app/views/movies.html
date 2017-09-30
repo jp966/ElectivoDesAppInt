@@ -15,22 +15,22 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr ng-repeat="deuda in totalDeudas">
+		    <tr ng-repeat="deuda in totalDeudas track by $index">
 		      <td>{{deuda.cliente.nombre_completo}}</td>
 		      <td>{{deuda.cuotas.length}}</td>
 		      <td>${{deuda.cuotas[0].valor}}</td>
 		      <td>${{deuda.prestamo}}</td>
 		      <td>${{deuda.total}}</td>
-
-		      <td ng-show={{deuda.cuotas[0].pagado}}> 
+			
+		      <td ng-show="deuda.cuotas[0].pagado"> 
 				Pagado
 		      </td>
 
-		      <td ng-show=!{{deuda.cuotas[0].pagado}}> 
+		      <td ng-show="!deuda.cuotas[0].pagado"> 
 				No pagado 
 		      </td>
-
-		      <td><button class="btn btn-light" type="button" style="width: 100%" ng-click="pagarCuotas(deuda.cuotas)" ng-disabled={{deuda.cuotas[0].pagado}}>Pagar Cuotas</button></td>
+				
+		      <td><button class="btn btn-light" type="button" style="width: 100%" ng-click="pagarCuotas(deuda.cuotas[0],deuda)" ng-disabled="deuda.cuotas[0].pagado">Pagar Cuotas</button></td>
 		    </tr>
 		  </tbody>
 	</table>

@@ -14,32 +14,28 @@ home.controller('deudasController', ['$location','$scope', 'localStorageService'
 function deudasController($location,$scope,localStorageService){
 
 
-	//if($scope.clientes = JSON.parse(localStorageService.get('clientes'))){
-
-		//arreglo de deudas
-	   var totalDeudas=[];
-	   totalDeudas=JSON.parse(localStorageService.get('deudas')) || 10000000;
+	//arreglo de deudas
+	   //var totalDeudas=[];
+	   var totalDeudas=JSON.parse(localStorageService.get('deudas')) || [];
 	   $scope.totalDeudas=totalDeudas;
 
 	   //capital
-	   var capital_actual=JSON.parse(localStorageService.get('capital'));
+	   var capital_actual=JSON.parse(localStorageService.get('capital')) || 10000000;
 	   $scope.capital_actual=capital_actual;
 
-	   //funcion creada solo para probar cosas
-	   $scope.pagarCuotas=function(cuotas){
-	   		for(var i=0;i<cuotas.length;i++){
-	   			if(cuotas[i].pagado==false){
-
-		   			cuotas[i].pagado=true;
-
-
-
+	   //paga las cuotas de la deuda seleccionada
+	   $scope.pagarCuotas=function(cuota,deuda){
+	   	var indice=totalDeudas.indexOf(deuda);
+	   		for(var i=0;i<totalDeudas[indice].cuotas.length;i++){
+	   			if(totalDeudas[indice].cuotas[i].pagado==false){
+	   				//actualización de totalDeudas
+		   			totalDeudas[indice].cuotas[i].pagado=true;
+		   			$scope.totalDeudas=totalDeudas;
 		   			localStorageService.set('deudas',JSON.stringify(totalDeudas));
 
-		   			totalDeudas=JSON.parse(localStorageService.get('deudas'));
-		   			$scope.totalDeudas=totalDeudas;
-
-		   			capital_actual=capital_actual+cuotas[i].valor;
+		   			//totalDeudas=JSON.parse(localStorageService.get('deudas'));
+		   		
+		   			capital_actual=capital_actual+cuota.valor;
 		   			$scope.capital_actual=capital_actual;
 					localStorageService.set('capital',JSON.stringify(capital_actual));
 				}
@@ -48,9 +44,10 @@ function deudasController($location,$scope,localStorageService){
 	   	
 	   }
 
-
+	
 
 	   /*
+	   //paga todas las cuotas de todas las deudas
 	   $scope.pagarCuotas=function(cuota,deudor){
 
 	   		var deudas=JSON.parse(localStorageService.get('deudas'));
@@ -79,7 +76,7 @@ function deudasController($location,$scope,localStorageService){
 			}
 
 		}
-		*/
+		
 	   
 	   //arreglo de clientes clickeados para revisar deudas
 	   /*
@@ -118,7 +115,7 @@ function deudasController($location,$scope,localStorageService){
 		
 
 	
-	//}
+
 
 }
 

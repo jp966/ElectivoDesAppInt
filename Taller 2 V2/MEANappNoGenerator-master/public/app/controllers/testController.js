@@ -43,8 +43,8 @@ function testController($location, $scope, localStorageService){
 
 
 		//arreglo de deudas
-	   var totalDeudas=[];
-	   totalDeudas=JSON.parse(localStorageService.get('deudas')) || [];
+	   //var totalDeudas=[];
+	   var totalDeudas=JSON.parse(localStorageService.get('deudas')) || [];
 	   $scope.totalDeudas=totalDeudas;
 
 	   $scope.cuotas= [{
