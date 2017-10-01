@@ -171,7 +171,6 @@ function prestamoController($location, $scope, localStorageService){
 	   		var n_cuotas=$scope.prestamo.cantidadCuotas;
 
 	   		
-	   		alert($scope.cuotas.length);
 	   		for(var i=0;i<$scope.cuotas.length;i++){
 
 	   			if($scope.cuotas[i].n_cuotas==n_cuotas){
@@ -182,7 +181,6 @@ function prestamoController($location, $scope, localStorageService){
 	   			}
 	   		}
 
-	   		alert(interes);
 
 	   		var totalPrestamo=prestamo + (prestamo * (interes / 100));
 	   		var totalCuota=totalPrestamo/n_cuotas;
