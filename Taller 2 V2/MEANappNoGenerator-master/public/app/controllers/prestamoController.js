@@ -87,7 +87,6 @@ function prestamoController($location, $scope, localStorageService){
 					}
 				}
 
-				alert(indice);
 				clientes.splice(indice, 1);
 
 				localStorageService.set('clientes',JSON.stringify(clientes));
