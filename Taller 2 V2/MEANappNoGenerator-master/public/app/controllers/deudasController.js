@@ -1,4 +1,5 @@
-
+'use strict';
+(function () {
 //Instancia de angular
 var home = angular.module('mainModule');
 
@@ -23,6 +24,41 @@ function deudasController($location,$scope,localStorageService){
 	   var capital_actual=JSON.parse(localStorageService.get('capital')) || 10000000;
 	   $scope.capital_actual=capital_actual;
 
+	   //indice deuda del cliente seleccionado
+	   var indiceDeuda=null;
+	   //arreglo temporal que guardará las cuotas del clente seleccionado
+	   $scope.cuotasCliente=[];
+	   //booleano para mostrar y esconder tabla
+	   $scope.habilitarTabla=false;
+
+	   //función mara mostrar las cuotas del cliente
+	   $scope.mostrarCuotas=function(deuda){
+	   	$scope.deudaCliente=deuda;
+	   
+	   	indiceDeuda=totalDeudas.indexOf(deuda);
+
+	   	$scope.cuotasCliente=totalDeudas[indiceDeuda].cuotas;
+
+	   	$scope.habilitarTabla=!$scope.habilitarTabla;
+
+	   }
+	   //paga cuota individual
+	   $scope.pagarCuota=function(cuota){
+	   	var indice=totalDeudas[indiceDeuda].cuotas.indexOf(cuota);
+
+	   	totalDeudas[indiceDeuda].cuotas[indice].pagado=true;
+	   	
+	   	$scope.totalDeudas=totalDeudas;
+		localStorageService.set('deudas',JSON.stringify(totalDeudas));
+	   	
+	   	capital_actual=capital_actual+cuota.valor;
+		$scope.capital_actual=capital_actual;
+		localStorageService.set('capital',JSON.stringify(capital_actual));
+
+	   }
+
+
+	   /*
 	   //paga las cuotas de la deuda seleccionada
 	   $scope.pagarCuotas=function(cuota,deuda){
 	   	var indice=totalDeudas.indexOf(deuda);
@@ -119,4 +155,4 @@ function deudasController($location,$scope,localStorageService){
 
 }
 
-
+})();

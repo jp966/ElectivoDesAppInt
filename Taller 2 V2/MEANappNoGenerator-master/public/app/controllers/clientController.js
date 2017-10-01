@@ -1,4 +1,5 @@
-
+'use strict';
+(function () {
 //Instancia de angular
 var home = angular.module('mainModule');
 
@@ -66,4 +67,4 @@ function clientController($scope, localStorageService){
 
 }
 
-
+})();

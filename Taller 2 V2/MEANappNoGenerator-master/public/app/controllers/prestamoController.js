@@ -1,17 +1,18 @@
-
+'use strict';
+(function () {
 //Instancia de angular
 var home = angular.module('mainModule');
 
 
 //Se crea un controlador con su funcion callback
-home.controller('testController',['$location','$scope', 'localStorageService',testController] );
+home.controller('prestamoController',['$location','$scope', 'localStorageService',prestamoController] );
 
 
 
 
 //Se definen todos aquellos elemtentos que seran utilizados por el nodo del DOM que
 //tenga la instancia de este controlador
-function testController($location, $scope, localStorageService){
+function prestamoController($location, $scope, localStorageService){
 
 
 	if($scope.clientes = JSON.parse(localStorageService.get('clientes'))){
@@ -67,7 +68,7 @@ function testController($location, $scope, localStorageService){
 
 
 
-		verificarCliente=function(valor,cliente){
+		function verificarCliente(valor,cliente){
 			return valor===cliente;
 
 		}
@@ -254,5 +255,7 @@ function testController($location, $scope, localStorageService){
 
 
 }
+
+})();
 
 

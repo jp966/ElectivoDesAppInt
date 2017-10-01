@@ -10,7 +10,7 @@
 		      <th>Valor Cuotas</th>
 		      <th>Valor Préstamo</th>
 		      <th>Total Préstamo</th>
-		      <th>Estado</th>
+		      <!--<th>Estado</th>-->
 		      <th>Acción</th>
 		    </tr>
 		  </thead>
@@ -21,7 +21,8 @@
 		      <td>${{deuda.cuotas[0].valor}}</td>
 		      <td>${{deuda.prestamo}}</td>
 		      <td>${{deuda.total}}</td>
-			
+		      <td><button class="btn btn-light" type="button" style="width: 100%" ng-click="mostrarCuotas(deuda)">Ver Cuotas</button></td>
+			<!--
 		      <td ng-show="deuda.cuotas[0].pagado"> 
 				Pagado
 		      </td>
@@ -31,12 +32,13 @@
 		      </td>
 				
 		      <td><button class="btn btn-light" type="button" style="width: 100%" ng-click="pagarCuotas(deuda.cuotas[0],deuda)" ng-disabled="deuda.cuotas[0].pagado">Pagar Cuotas</button></td>
+		  -->
 		    </tr>
 		  </tbody>
 	</table>
 
-<!--
-	<table class="table table-inverse">
+
+	<table class="table table-inverse" ng-show="habilitarTabla">
 		  <thead>
 		    <tr>
 		      <th>Valor cuota</th>
@@ -45,12 +47,19 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr ng-repeat="deuda in totalDeudas">
-		      <td>{{deuda.cliente.nombre_completo}}</td>
-		      <td>{{deuda.cuotas.length}}</td>
-		      <td><button class="btn btn-light" type="button" style="width: 100%">Pagar cuota</button></td>
+		    <tr ng-repeat="cuota in cuotasCliente track by $index">
+		      <td>{{cuota.valor}}</td>
+
+		      <td ng-show="cuota.pagado"> 
+				Pagado
+		      </td>
+
+		      <td ng-show="!cuota.pagado"> 
+				No pagado 
+		      </td>
+		      <td><button class="btn btn-light" type="button" style="width: 100%" ng-disabled="cuota.pagado" ng-click="pagarCuota(cuota)">Pagar cuota</button></td>
 		    </tr>
 		  </tbody>
 	</table>
-	-->
+	
 </div>
