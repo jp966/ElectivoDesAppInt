@@ -1,5 +1,5 @@
 # AngularJS con NodeJS y MongoDB sin Generator
-## Instalacion
+## Instalacion (eliminar node_modules y package-lock.json antes de seguir con los pasos)
 
 ```
 npm install
