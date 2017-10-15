@@ -8,6 +8,12 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
+
+  .state('app', {
+      url: '/',
+      templateUrl: 'app/containers/buscar.html'
+    })
+
     .state('hola', {
       url: '/',
       component: 'hola'
@@ -16,6 +22,12 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     	url: '/nuevoComponente',
     	component: 'nuevoComponente'
 
+
+    })
+    .state('letra',{
+      //artist y tittle son los parámetros
+     url:'/letra/:artist/:title',
+     component:'letra'
 
     });
 }

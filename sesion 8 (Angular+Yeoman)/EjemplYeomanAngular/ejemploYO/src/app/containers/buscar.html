@@ -1,0 +1,24 @@
+<br>
+<!--Se centra con un margen del 10% a la izquierda y derecha-->
+<div flex="80" flex-offset="10">
+	<div layout="column" flex>
+		<!--Primer elemento de la columna-->
+		<div layout="row" flex>
+			<md-input-container class="md-icon-float md-block" flex="50">
+				<!-- Use floating label instead of placeholder -->
+				<label>Artista</label>
+				<md-icon md-svg-src="assets/img/singer.svg" class="name"></md-icon>
+				<input ng-model="artist" type="text">
+			</md-input-container>	
+
+			<md-input-container class="md-icon-float md-block" flex>
+				<!-- Use floating label instead of placeholder -->
+				<label>Cancion</label>
+				<md-icon md-svg-src="assets/img/music.svg" class="name"></md-icon>
+				<input ng-model="title" type="text">
+			</md-input-container>	
+		</div>
+		<!--Segundo elemento de la columna-->
+		<md-button ui-sref="letra({artist:artist, title:title})" class="md-raised md-primary" flex>Buscar</md-button>
+	</div>
+</div>
